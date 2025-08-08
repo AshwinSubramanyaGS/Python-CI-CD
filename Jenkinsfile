@@ -1,10 +1,5 @@
 pipeline {
     agent any
-
-    tools {
-        python 'Python_3.11'   // Must match name in Jenkins Global Tool Config
-    }
-
     triggers {
         githubPush()
     }
