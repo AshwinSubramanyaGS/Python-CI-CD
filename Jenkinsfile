@@ -1,3 +1,6 @@
+tools {
+    python 'Python_3.11'
+}
 pipeline {
     agent any
 
