@@ -51,7 +51,7 @@ pipeline {
                 start /B venv\\Scripts\\python.exe app.py
 
                 REM ===== Wait 3 seconds for Flask to start =====
-                timeout /T 3 >nul
+                timeout /T 3
                 '''
             }
         }
