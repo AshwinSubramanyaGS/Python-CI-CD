@@ -15,9 +15,8 @@ pipeline {
             steps {
                 bat '''
                 python -m venv venv
-                call venv\\Scripts\\activate
-                pip install --upgrade pip
-                pip install -r requirements.txt
+                venv\\Scripts\\python.exe -m pip install --upgrade pip
+                venv\\Scripts\\python.exe -m pip install -r requirements.txt
                 '''
             }
         }
@@ -25,8 +24,7 @@ pipeline {
         stage('Run Unit Tests') {
             steps {
                 bat '''
-                call venv\\Scripts\\activate
-                pytest --maxfail=1 --disable-warnings -q || echo "No tests found"
+                venv\\Scripts\\python.exe -m pytest --maxfail=1 --disable-warnings -q || echo "No tests found"
                 '''
             }
         }
@@ -50,8 +48,7 @@ pipeline {
                 for /f "tokens=5" %%a in ('netstat -ano ^| findstr :5000 ^| findstr LISTENING') do taskkill /F /PID %%a
 
                 REM ===== Start new Flask app =====
-                call venv\\Scripts\\activate
-                start /B python app.py
+                start /B venv\\Scripts\\python.exe app.py
 
                 REM ===== Wait 3 seconds for Flask to start =====
                 timeout /T 3 >nul
