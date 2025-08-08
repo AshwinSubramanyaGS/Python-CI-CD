@@ -52,6 +52,7 @@ pipeline {
 
                 REM ===== Wait 3 seconds for Flask to start =====
                 ping 127.0.0.1 -n 4 > nul
+                ping 127.0.0.1 -n 4 > nul
                 '''
             }
         }
