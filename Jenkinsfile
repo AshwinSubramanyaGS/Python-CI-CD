@@ -48,7 +48,7 @@ pipeline {
                 for /f "tokens=5" %%a in ('netstat -ano ^| findstr :5000 ^| findstr LISTENING') do taskkill /F /PID %%a
 
                 REM ===== Start new Flask app =====
-                start cmd /c powershell -NoExit -WindowStyle Normal -Command "venv\\\\Scripts\\\\python.exe app.py"
+                start /B venv\\Scripts\\python.exe app.py
 
                 REM ===== Wait 3 seconds for Flask to start =====
                 ping 127.0.0.1 -n 4 > nul
